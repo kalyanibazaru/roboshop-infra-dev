@@ -99,7 +99,7 @@ module "mysql" {
   instance_type          = "t3.small"
   vpc_security_group_ids = [data.aws_ssm_parameter.mysql_sg_id.value]
   subnet_id              = local.database_subnet_id
-  iam_instance_profile = "ShellScriptRoleForRoboshop"
+  iam_instance_profile = "ShellScriptRoleForRoboshop" #here server provisioning through ansible, so it is responsibility to get the information from SSM parameter store. now ansible will connected to ssm parameter store through boto3, botocore python modules to connect. if we not install these  ansible can't connect that server and also that instance must have administratorFullAceess policy for that role.   
   tags = merge(
     var.common_tags,
     {
