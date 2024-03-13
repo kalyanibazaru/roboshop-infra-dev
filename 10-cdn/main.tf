@@ -1,4 +1,4 @@
-resource "aws_cloudfront_distribution" "daws76s" {
+resource "aws_cloudfront_distribution" "bkdevops" {
   enabled             = true
   aliases             = ["web-${var.tags.Component}.${var.zone_name}"]
   origin {
