@@ -14,7 +14,7 @@ pipeline {
         
     }
    parameters {
-        string(name: 'action', choices: ['apply', 'destroy'], defaultValue: 'Mr Jenkins', description: 'pick something?')
+        choice(name: 'action', choices: ['apply', 'destroy'], description: 'Pick something')
    }
     //build
     stages {
