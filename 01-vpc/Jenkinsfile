@@ -13,7 +13,9 @@ pipeline {
         disableConcurrentBuilds()
         
     }
-   
+   parameters {
+        string(name: 'action', choices: ['apply', 'destroy'], defaultValue: 'Mr Jenkins', description: 'pick something?')
+   }
     //build
     stages {
         stage('Init') { 
@@ -33,6 +35,11 @@ pipeline {
             }
         }
         stage('Deploy') { 
+            when {
+                expression {
+                    "${params.action}" == 'apply' 
+                }
+            }
             input {
                 message "Should we continue?"
                 ok "yes, we should."
